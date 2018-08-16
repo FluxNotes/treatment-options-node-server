@@ -2,7 +2,6 @@ import HardCodedTreatmentData from './HardCodedTreatmentData.json';
 
 class TreatmentDataAccess {
     getTreatmentData(disease, race, grade) {
-
         const treatmentOptions = ['Chemo', 'Chemo+Rad', 'Hormonal', 'Radiation',
                                 'Surgery', 'Surg+Rad', 'No-Treatment'];
 
