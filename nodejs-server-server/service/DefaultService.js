@@ -10,7 +10,7 @@ const HardCodedTreatmentData = require('../../dataaccess/HardCodedTreatmentData.
  * dxGrade String grade of disease filter (optional)
  * returns List
  **/
-exports.findTreatmentOptionsByPatientStats = function(disease,race,dxGrade) {
+exports.findTreatmentOptionsByPatientStats = (disease,race,dxGrade) => {
   return new Promise(function(resolve, reject) {
   
     const treatmentOptions = ['Chemo', 'Chemo+Rad', 'Hormonal', 'Radiation',
@@ -20,21 +20,15 @@ exports.findTreatmentOptionsByPatientStats = function(disease,race,dxGrade) {
     let aliveSeries = [];
 
     HardCodedTreatmentData.forEach((v) => {
-    if(v.Disease === disease && v.Race === race && v['Dx-Grade'] === dxGrade && v['Is-Alive'] === 'Dead'){
-    deceasedSeries.push([ treatmentOptions.indexOf(v['Treat-option'])  , v['Survival-months'] ]);
+    if (v.Disease === disease && v.Race === race && v['Dx-Grade'] === dxGrade && v['Is-Alive'] === 'Dead') {
+        deceasedSeries.push([ treatmentOptions.indexOf(v['Treat-option'])  , v['Survival-months'] ]);
     }
-    if(v.Disease === disease && v.Race === race && v['Dx-Grade'] === dxGrade && v['Is-Alive'] === 'Alive'){
-    aliveSeries.push([ treatmentOptions.indexOf(v['Treat-option'])  , v['Survival-months'] ]);
+    if (v.Disease === disease && v.Race === race && v['Dx-Grade'] === dxGrade && v['Is-Alive'] === 'Alive') {
+        aliveSeries.push([ treatmentOptions.indexOf(v['Treat-option'])  , v['Survival-months'] ]);
     }  
     });
     resolve ([aliveSeries, deceasedSeries]);
     
-/*
-    if (Object.keys(examples).length > 0) {
-      resolve(examples[Object.keys(examples)[0]]);
-    } else {
-      resolve();
-    }*/
   });
 }
 
@@ -43,9 +37,7 @@ exports.findTreatmentOptionsByPatientStats = function(disease,race,dxGrade) {
  *
  * no response value expected for this operation
  **/
-exports.treatmentOptionsOPTIONS = function() {
-  return new Promise(function(resolve, reject) {
-    resolve();
-  });
+exports.treatmentOptionsOPTIONS = () => {
+  Promise.resolve();
 }
 
