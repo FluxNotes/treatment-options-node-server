@@ -1,5 +1,6 @@
 'use strict';
 const HardCodedTreatmentData = require('../../dataaccess/HardCodedTreatmentData.json');
+const handler = require('../../flux/defaultHandlers');
 
 /**
  * Get treatment options given filters
@@ -10,7 +11,8 @@ const HardCodedTreatmentData = require('../../dataaccess/HardCodedTreatmentData.
  * dxGrade String grade of disease filter (optional)
  * returns List
  **/
-exports.findTreatmentOptionsByPatientStats = (disease,race,dxGrade) => {
+exports.findTreatmentOptionsByPatientStats = (params, res, next) => {
+  /*
   return new Promise(function(resolve, reject) {
   
     const treatmentOptions = ['Chemo', 'Chemo+Rad', 'Hormonal', 'Radiation',
@@ -29,7 +31,8 @@ exports.findTreatmentOptionsByPatientStats = (disease,race,dxGrade) => {
     });
     resolve ([aliveSeries, deceasedSeries]);
     
-  });
+  });*/
+  handler.findTreatmentOptionsByPatientStats(params, res, next);
 }
 
 
