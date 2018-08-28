@@ -12,26 +12,6 @@ const handler = require('../../flux/defaultHandlers');
  * returns List
  **/
 exports.findTreatmentOptionsByPatientStats = (params, res, next) => {
-  /*
-  return new Promise(function(resolve, reject) {
-  
-    const treatmentOptions = ['Chemo', 'Chemo+Rad', 'Hormonal', 'Radiation',
-    'Surgery', 'Surg+Rad', 'No-Treatment'];
-
-    let deceasedSeries = [];
-    let aliveSeries = [];
-
-    HardCodedTreatmentData.forEach((v) => {
-    if (v.Disease === disease && v.Race === race && v['Dx-Grade'] === dxGrade && v['Is-Alive'] === 'Dead') {
-        deceasedSeries.push([ treatmentOptions.indexOf(v['Treat-option'])  , v['Survival-months'] ]);
-    }
-    if (v.Disease === disease && v.Race === race && v['Dx-Grade'] === dxGrade && v['Is-Alive'] === 'Alive') {
-        aliveSeries.push([ treatmentOptions.indexOf(v['Treat-option'])  , v['Survival-months'] ]);
-    }  
-    });
-    resolve ([aliveSeries, deceasedSeries]);
-    
-  });*/
   handler.findTreatmentOptionsByPatientStats(params, res, next);
 }
 

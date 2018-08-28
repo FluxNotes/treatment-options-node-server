@@ -1,12 +1,12 @@
-var MongoClient = require('mongodb').MongoClient;
-var HardCodedTreatmentData = require('./dataaccess/HardCodedTreatmentData.json');
+const MongoClient = require('mongodb').MongoClient;
+const HardCodedTreatmentData = require('./dataaccess/HardCodedTreatmentData.json');
 const mongoHost = 'localhost';
 const mongoPort = 27017;
 const databaseName = 'treatment-options';
 
-var result = null;
-var database;
-var dbPromise = MongoClient.connect("mongodb://" + mongoHost + ":" + mongoPort + "/" + databaseName);
+const result = null;
+const database;
+const dbPromise = MongoClient.connect("mongodb://" + mongoHost + ":" + mongoPort + "/" + databaseName);
 dbPromise.then(function(database) {
     var collection = database.collection('entries');
     var insertData = collection.insertMany(HardCodedTreatmentData);
