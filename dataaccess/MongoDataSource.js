@@ -12,7 +12,7 @@ export default class MongoDataSource {
         let database;
         return MongoClient.connect("mongodb://" + mongoHost + ":" + mongoPort + "/" + databaseName)
         .then( database => {
-            const collection = database.collection('entries');
+            const collection = database.collection('Treatment Options Data');
             const result = collection.find({Disease: disease}).toArray();
             let alive = [];
             let deceased = [];
