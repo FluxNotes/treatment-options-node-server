@@ -9,8 +9,6 @@ function findTreatmentOptionsByPatientStats(args, res, next) {
     const dxGrade = args['dxGrade'].value;
     try{
         const data = da.findTreatmentOptionsByPatientStats(disease, race, dxGrade);
-        console.log("Data returned from datasoucre: ");
-        console.log(data);
         data.then(function(result) {
             console.log()
             if(typeof result === 'string'){

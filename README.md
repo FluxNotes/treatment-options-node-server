@@ -6,7 +6,7 @@ This project is the NodeJS server implementation of the treatment-options-api
 
 Run the following command in the /nodejs-server-server directory
 
-npm install
+yarn install
 
 This server optionally uses MongoDB as a backend.
 
@@ -18,7 +18,7 @@ node insertTreatmentData.js
 
 In order to start the server run the following command in the /nodejs-server-server
 
-npm start
+yarn start
 
 The server will be running at
 
