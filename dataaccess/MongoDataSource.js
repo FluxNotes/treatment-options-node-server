@@ -16,7 +16,6 @@ export default class MongoDataSource {
             const result = collection.find({Disease: disease}).toArray();
             let alive = [];
             let deceased = [];
-            console.log(result);
             return result.then(function(result2) {
                 result2.forEach(entry => {
                     if((race === "undefined" ? true : (entry.Race === race)) && (dxGrade === "undefined" ? true: (entry['Dx-Grade'] === dxGrade)) && entry['Is-Alive'] === 'Alive'){

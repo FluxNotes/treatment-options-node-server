@@ -6,10 +6,10 @@ const databaseName = 'treatment-options';
 
 const dbPromise = MongoClient.connect("mongodb://" + mongoHost + ":" + mongoPort + "/" + databaseName);
 dbPromise.then(function(database) {
-    var collection = database.collection('entries');
+    var collection = database.collection('Treatment Options Data');
     var insertData = collection.insertMany(HardCodedTreatmentData);
     insertData.then(function(result) {
-        console.log(result.insertedCount + "treatment data entries inserted.");
+        console.log(result.insertedCount + " treatment data entries inserted.");
         process.exit();
     });
 }, function(err) {
