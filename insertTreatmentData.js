@@ -4,8 +4,6 @@ const mongoHost = 'localhost';
 const mongoPort = 27017;
 const databaseName = 'treatment-options';
 
-const result = null;
-const database;
 const dbPromise = MongoClient.connect("mongodb://" + mongoHost + ":" + mongoPort + "/" + databaseName);
 dbPromise.then(function(database) {
     var collection = database.collection('entries');
