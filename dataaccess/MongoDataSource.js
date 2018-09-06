@@ -7,8 +7,6 @@ const databaseName = 'treatment-options';
 export default class MongoDataSource {
 
    findTreatmentOptionsByPatientStats = (disease, race, dxGrade) => {
-        const treatmentOptions = ['Chemo', 'Chemo+Rad', 'Hormonal', 'Radiation',
-        'Surgery', 'Surg+Rad', 'No-Treatment'];
         let database;
         return MongoClient.connect("mongodb://" + mongoHost + ":" + mongoPort + "/" + databaseName)
         .then( database => {
@@ -21,10 +19,10 @@ export default class MongoDataSource {
             let deceased = [];
             result2.forEach(entry => {
                 if((race === "undefined" ? true : (entry.Race === race)) && (dxGrade === "undefined" ? true: (entry['Dx-Grade'] === dxGrade)) && entry['Is-Alive'] === 'Alive'){
-                    alive.push([ treatmentOptions.indexOf(entry['Treat-option'])  , entry['Survival-months'] ]);
+                    alive.push([ entry['Treat-option'], entry['Survival-months'] ]);
                 }
                 if((race === "undefined" ? true: (entry.Race === race)) && (dxGrade === "undefined" ? true: (entry['Dx-Grade'] === dxGrade)) && entry['Is-Alive'] === 'Dead'){
-                    deceased.push([ treatmentOptions.indexOf(entry['Treat-option'])  , entry['Survival-months'] ]);
+                    deceased.push([ entry['Treat-option'], entry['Survival-months'] ]);
                 }
             });
             return([alive, deceased]);
