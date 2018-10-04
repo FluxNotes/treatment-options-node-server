@@ -15,11 +15,11 @@ Ensure that MongoDB is installed. Detailed MongoDB installation instructions are
 
 Run the following script from inside './treatment-options-node-server' directory to insert the hard coded treatment data into MongoDB:
 
-node insertTreatmentData.js
+`node insertTreatmentData.js`
 
 In order to start the server run the following command in the /nodejs-server-server
 
-yarn start
+`yarn start`
 
 The server will be running at
 
