@@ -2,11 +2,11 @@
 
 This project is the NodeJS server implementation of the treatment-options-api
 
-#Running the server
+# Running the server
 
 Run the following command in the directory containing this readme. 
 
-yarn install
+`yarn install`
 
 
 This server optionally uses MongoDB as a backend.
