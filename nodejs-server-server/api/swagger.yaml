@@ -2,7 +2,7 @@
 swagger: "2.0"
 info:
   description: "FluxNotes Treatment Options Rest Client"
-  version: "1.0.0"
+  version: "1.0.1"
   title: "FluxNotes Treatment Options Rest Client"
 host: "localhost:3001"
 basePath: "/api"
@@ -18,12 +18,12 @@ paths:
       - "application/xml"
       - "application/json"
       parameters:
-      - name: "Disease"
+      - name: "disease"
         in: "query"
         description: "disease filter"
         required: true
         type: "string"
-      - name: "Race"
+      - name: "race"
         in: "query"
         description: "race filter"
         required: false
@@ -31,6 +31,84 @@ paths:
       - name: "dxGrade"
         in: "query"
         description: "grade of disease filter"
+        required: false
+        type: "string"
+      - name: "ageAtDiagnosis"
+        in: "query"
+        description: "age at diagnosis filter"
+        required: false
+        type: "string"
+      - name: "gender"
+        in: "query"
+        description: "patient gender filter"
+        required: false
+        type: "string"
+      - name: "stageAtDiagnosis"
+        in: "query"
+        description: "stage at diagnosis filter"
+        required: false
+        type: "string"
+      - name: "mitosisCount"
+        in: "query"
+        description: "mitosis count filter"
+        required: false
+        type: "string"
+      - name: "cancerSite"
+        in: "query"
+        description: "cancer site filer"
+        required: false
+        type: "string"
+      - name: "surgery"
+        in: "query"
+        description: "surgery recieved filter"
+        required: false
+        type: "string"
+      - name: "pastTreatments"
+        in: "query"
+        description: "Treatments recieved in past"
+        required: false
+        type: "array"
+        items:
+          type: "string"
+        collectionFormat: "csv"
+      - name: "Hemoglobin"
+        in: "query"
+        description: "lab result for hemoglobin filter"
+        required: false
+        type: "string"
+      - name: "Albumin"
+        in: "query"
+        description: "lab result for albumin filter"
+        required: false
+        type: "string"
+      - name: "CD117/KIT"
+        in: "query"
+        description: "immunohistochemical finding"
+        required: false
+        type: "string"
+      - name: "CD34"
+        in: "query"
+        description: "immunohistochemical finding"
+        required: false
+        type: "string"
+      - name: "α-Smooth muscle actin"
+        in: "query"
+        description: "immunohistochemical finding"
+        required: false
+        type: "string"
+      - name: "desmin"
+        in: "query"
+        description: "immunohistochemical finding"
+        required: false
+        type: "string"
+      - name: "S-100"
+        in: "query"
+        description: "immunohistochemical finding"
+        required: false
+        type: "string"
+      - name: "Ki67 index"
+        in: "query"
+        description: "immunohistochemical finding"
         required: false
         type: "string"
       responses:
@@ -114,12 +192,6 @@ definitions:
   TreatmentOptions:
     type: "object"
     properties:
-      disease:
-        type: "string"
-        description: "disease filter"
-      race:
-        type: "string"
-        description: "race filter"
       isAlive:
         type: "string"
         description: "dead or alive"
@@ -127,18 +199,12 @@ definitions:
         type: "integer"
         format: "int32"
         description: "survival time in months"
-      dxGrade:
-        type: "string"
-        description: "grade of the disease to filter"
       treatOptions:
         type: "string"
         description: "treatment option recieved"
     example:
       isAlive: "isAlive"
-      dxGrade: "dxGrade"
       treatOptions: "treatOptions"
-      disease: "disease"
-      race: "race"
       survivalMonths: 0
 externalDocs:
   description: "Find out more about Swagger"
