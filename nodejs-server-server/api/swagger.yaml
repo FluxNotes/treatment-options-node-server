@@ -23,12 +23,12 @@ paths:
         description: "disease filter"
         required: true
         type: "string"
-      - name: "race"
+      - name: "Race"
         in: "query"
         description: "race filter"
         required: false
         type: "string"
-      - name: "dxGrade"
+      - name: "Dx-Grade"
         in: "query"
         description: "grade of disease filter"
         required: false
