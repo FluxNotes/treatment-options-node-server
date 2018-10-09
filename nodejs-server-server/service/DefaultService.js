@@ -11,8 +11,8 @@ const handler = require('../../flux/defaultHandlers');
  * dxGrade String grade of disease filter (optional)
  * returns List
  **/
-exports.findTreatmentOptionsByPatientStats = (params, res, next) => {
-  handler.findTreatmentOptionsByPatientStats(params, res, next);
+exports.findTreatmentOptionsByPatientStats = (disease,race,dxGrade) => {
+  return handler.findTreatmentOptionsByPatientStats(disease,race,dxGrade);
 }
 
 
@@ -20,7 +20,8 @@ exports.findTreatmentOptionsByPatientStats = (params, res, next) => {
  *
  * no response value expected for this operation
  **/
-exports.treatmentOptionsOPTIONS = () => {
-  Promise.resolve();
+exports.treatmentOptionsOPTIONS = function() {
+  return new Promise(function(resolve, reject) {
+    resolve();
+  });
 }
-

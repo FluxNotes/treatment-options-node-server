@@ -14,10 +14,10 @@ export default class MongoDataSource {
             const result = collection.find({Disease: disease}).toArray();
             return result;
         })
-        .then( result2 => {
+        .then( mongoData => {
             let alive = [];
             let deceased = [];
-            result2.forEach(entry => {
+            mongoData.forEach(entry => {
                 if((race === "undefined" ? true : (entry.Race === race)) && (dxGrade === "undefined" ? true: (entry['Dx-Grade'] === dxGrade)) && entry['Is-Alive'] === 'Alive'){
                     alive.push([ entry['Treat-option'], entry['Survival-months'] ]);
                 }
@@ -27,8 +27,5 @@ export default class MongoDataSource {
             });
             return([alive, deceased]);
         })
-        .catch(function(err) {
-            return err.message;
-        }) ; 
     }
 }
