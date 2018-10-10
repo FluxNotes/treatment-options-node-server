@@ -6,35 +6,33 @@ const databaseName = 'treatment-options';
 
 export default class MongoDataSource {
 
-   findTreatmentOptionsByPatientStats = (params) => {
+   findTreatmentOptionsByPatientStats = (disease, opts) => {
    
-        Object.keys(params).forEach(key => params[key].value === undefined ? delete params[key] : '');
-    
         let database;
         const demoFlag = process.argv.length > 2 && process.argv[2] === '--nodemo' ? false : true;
         return MongoClient.connect("mongodb://" + mongoHost + ":" + mongoPort + "/" + databaseName)
-        .then( async (database) => {
+        .then( (database) => {
             const collection = database.collection('Treatment Options Data');
-            const result = collection.find({Disease: params['disease'].value}).toArray();
+            const result = collection.find({Disease: disease}).toArray();
         
             return result;
         })
         .then( mongoData => {
-      
+            Object.keys(opts).forEach(key => opts[key].value === undefined ? delete opts[key] : '');
+            const keys = Object.keys(opts);
             let alive = [];
             let deceased = [];
             mongoData.forEach(entry => {
-                Object.keys(params).forEach(key => {
-                    if(entry[key] === params[key].value && entry['Is-Alive'] === 'Alive') {
-                        alive.push([ entry['Treat-option'], entry['Survival-months'] ]);
-                    }
-                    if(entry[key] === params[key].value && entry['Is-Alive'] === 'Dead') {
-                        deceased.push([ entry['Treat-option'], entry['Survival-months'] ]);
-                    }
-                })
+                if (keys.every(k => {return entry[k] === opts[k].value; }) && entry['Is-Alive'] === 'Alive'){
+                    alive.push([ entry['Treat-option'], entry['Survival-months'] ]);
+               }
+
+               if (keys.every(k => {return  entry[k] === opts[k].value; }) && entry['Is-Alive'] === 'Dead'){
+                    deceased.push([ entry['Treat-option'], entry['Survival-months'] ]);
+                }
             });
          
-            return([alive, deceased]);
+            return({data:{alive: alive, deceased: deceased}});
         })
     }
 

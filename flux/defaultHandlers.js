@@ -2,9 +2,9 @@
 import MongoDataSource from '../dataaccess/MongoDataSource';
 import Lang from 'lodash';
 
-function findTreatmentOptionsByPatientStats(args, resolve,reject) {
+function findTreatmentOptionsByPatientStats(disease, opts, resolve,reject) {
     const da = new MongoDataSource();
-    return da.findTreatmentOptionsByPatientStats(args);
+    return da.findTreatmentOptionsByPatientStats(disease, opts);
 }
 
 module.exports = {

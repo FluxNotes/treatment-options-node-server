@@ -26,8 +26,8 @@ const handler = require('../../flux/defaultHandlers');
  * ki67 index String immunohistochemical finding (optional)
  * returns List
  **/
-exports.findTreatmentOptionsByPatientStats = (params) => {
-  return handler.findTreatmentOptionsByPatientStats(params);
+exports.findTreatmentOptionsByPatientStats = (disease, opts) => {
+  return handler.findTreatmentOptionsByPatientStats(disease, opts);
 }
 
 
