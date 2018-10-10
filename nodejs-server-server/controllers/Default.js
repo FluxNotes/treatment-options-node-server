@@ -9,7 +9,6 @@ module.exports.findTreatmentOptionsByPatientStats = function findTreatmentOption
   delete req.swagger.params['disease'];
   Default.findTreatmentOptionsByPatientStats(disease, req.swagger.params)
     .then(function (response) {
-      console.log(response)
       utils.writeJson(res, response);
     })
     .catch(function (response) {
