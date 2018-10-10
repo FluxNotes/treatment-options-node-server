@@ -16,7 +16,8 @@
         "Fatigue":"no",
         "Anemia":"no",
         "Erectile-Dys":"no",
-        "Treat-option":"Surgery+TKI"
+        "Treat-option":"Surgery+TKI",
+        "gender": "Male"
       },
       {
         "Disease":"http://snomed.info/sct/420120006",
