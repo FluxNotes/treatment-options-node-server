@@ -1,5 +1,6 @@
 [
-    {
+     
+      {
         "Disease":"http://snomed.info/sct/420120006",
         "Race":"White",
         "Dx-Year":2004,
@@ -24355,4 +24356,7 @@
       "Erectile-Dys":"yes",
       "Treat-option":"Surgery"
     }
-]  
+  
+  ]
+
+
