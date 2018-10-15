@@ -1,7 +1,5 @@
 [
-      {
-        "useDemo": true
-      },
+     
       {
         "Disease":"http://snomed.info/sct/420120006",
         "Race":"White",
