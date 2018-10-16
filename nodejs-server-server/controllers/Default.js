@@ -4,10 +4,10 @@ var utils = require('../utils/writer.js');
 var Default = require('../service/DefaultService');
 
 module.exports.findTreatmentOptionsByPatientStats = function findTreatmentOptionsByPatientStats (req, res, next) {
-  var disease = req.swagger.params['Disease'].value;
-  var race = req.swagger.params['Race'].value;
-  var dxGrade = req.swagger.params['dxGrade'].value;
-  Default.findTreatmentOptionsByPatientStats(disease,race,dxGrade)
+  //console.log(req.swagger.params)
+  const disease = req.swagger.params['disease'].value;
+  delete req.swagger.params['disease'];
+  Default.findTreatmentOptionsByPatientStats(disease, req.swagger.params)
     .then(function (response) {
       utils.writeJson(res, response);
     })
