@@ -32,7 +32,7 @@ export default class MongoDataSource {
                 }
             });
          
-            return({data:{alive: alive, deceased: deceased}});
+            return({isDemo: demoFlag, data:{alive: alive, deceased: deceased}});
         })
     }
 
