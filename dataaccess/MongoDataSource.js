@@ -7,14 +7,12 @@ const databaseName = 'treatment-options';
 export default class MongoDataSource {
 
    findTreatmentOptionsByPatientStats = (disease, opts) => {
-   
         let database;
         const demoFlag = process.argv.length > 2 && process.argv[2] === '--nodemo' ? false : true;
         return MongoClient.connect("mongodb://" + mongoHost + ":" + mongoPort + "/" + databaseName)
         .then( (database) => {
             const collection = database.collection('Treatment Options Data');
             const result = collection.find({Disease: disease}).toArray();
-        
             return result;
         })
         .then( mongoData => {
